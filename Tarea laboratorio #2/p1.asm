@@ -11,16 +11,12 @@
 
 	section	.text
 
-	mov	AX, 8A4Fh
-	mov	BH, 5Dh
-	mov	CL, "A"
 
-	mov	[200h], AX
-	mov	[210h], BH
-	mov	[220h], CL
 
-	mov	byte [230h], 11d
-	mov	byte [240h], "B"
+	mov	byte [200h], "C"
+	mov	byte [201h], "J"
+	mov	byte [202h], "L"
+	mov	byte [203h], "T"
 
 	int	20h
 
