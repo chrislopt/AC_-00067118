@@ -20,14 +20,16 @@ org	100h
 
 ; Direccionamiento indirecto por registro
 ; Usamos el registro base como puntero para acceder a la memoria
-	mov	CX, [BX]
+	mov	     [201h] CX, 
+	mov      SI , [201h]
 
 ; Direccionamiento indirecto base mas indice 
 ; Usamos el registro base junto con un registro apuntador
-	mov 	AX, [BX+DI]
-	mov	[BX+DI], AX
+	mov	     [202h] AX, [BX+DI]
+	mov        [BX+DI], AX 
+
 
 ; Direccionamiento relativo por registro
-	mov	AX, [DI+100h]
+	mov	AX, [DI+203h]
 
 	int 	20h
