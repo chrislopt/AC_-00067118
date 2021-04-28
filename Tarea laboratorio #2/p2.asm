@@ -1,32 +1,27 @@
 ;Christian Jesus Lopez Tejada  carne:00067118
 ; parte 2: Luego, copiar a los siguientes registros los códigos ASCII de los caracteres guardados en 200h (75%):
 
+
 ;Copiar el valor de 200h a AX usando direccionamiento directo.
+    MOV       AX,  [200h]
+
+
 ;Copiar el valor de 201h a CX usando direccionamiento indirecto por registro.
+    MOV       BX,  [201h]
+    MOV       CX,  [BX]
+
+
 ;Copiar el valor de 202h a DX usando direccionamiento indirecto base más índice.
+    MOV       BP,  0200h
+    MOV       SI,  0002h
+    MOV       DX,  [BP + SI]
+
+
 ;Copiar el valor de 203h a DI usando direccionamiento relativo por registro.
+    MOV       BX,  0200h
+    OV       DI,  [BX + 0003h]  
 
-
-org	100h
-
-	section .text
-
-	mov 	AX, 25A0h 
-	mov	BX, 200h
-
-; Direccionamiento directo o absoluto
-	mov 	[200h], AX 
-	mov 	SI, [200h]
-
-; Direccionamiento indirecto por registro
-; Usamos el registro base como puntero para acceder a la memoria
-	mov	     [201h] CX, 
-	mov      SI , [201h]
-
-; Direccionamiento indirecto base mas indice 
-; Usamos el registro base junto con un registro apuntador
-	mov	     [202h] AX, [BX+DI]
-	mov        [BX+DI], AX 
+    int        20h
 
 
 ; Direccionamiento relativo por registro
