@@ -36,15 +36,17 @@ while:
         mov      BL,2
         div      BL            
         cmp      AH,0
-        je       par
-        ja       impar     
-par:
-        mov byte    [300h+DI], AL   
-        inc     DI  
-        jmp     while
+        je       impar
+        ja       par     
+
 impar:
         mov byte    [320h+DI], AL 
         inc     DI   
+        jmp     while
+
+par:
+        mov byte    [300h+DI], AL   
+        inc     DI  
         jmp     while
 
 end:    
