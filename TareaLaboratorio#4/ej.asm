@@ -19,6 +19,7 @@
 
         section .data
 
+
 ; arreglo de numeros del tipo "byte" 
 arrNum db      01,02,03,04,06,07,08,09,10,11,12,13,0xA   
      
@@ -27,10 +28,13 @@ arrNum db      01,02,03,04,06,07,08,09,10,11,12,13,0xA
 CompImparVpar:                       
         xor     SI, SI          ; SI = 0
         xor     DI, DI 
-;Bucle while que permite recorrer el arreglo hasta que se recorran los 14 elementos del array
+
+
+;Bucle while que permite recorrer el arreglo hasta que se recorran los 14 elementos del array.
+;Ademas, aqui se hace la verificacion si el numero es par o impar
 while:  
-        mov     AL, [BP+SI]     ; AL = [puntero a arreglo + SI]
-        cmp     AL, 0xA         ; verifica si AL == 0xA
+        mov     AL, [BP+SI]     
+        cmp     AL, 0xA         
         je       end
         inc     SI
         mov      BL,2
@@ -39,15 +43,18 @@ while:
         je       impar
         ja       par     
 
+;Para los numeros impares se guardan en el array, y se recorre el arreglo
 impar:
         mov byte    [320h+DI], AL 
         inc     DI   
         jmp     while
 
+;Para los numeros pares se guardan en el array, y se recorre el arreglo
 par:
         mov byte    [300h+DI], AL   
         inc     DI  
         jmp     while
 
+;Se finaliza el programa
 end:    
         ret       
